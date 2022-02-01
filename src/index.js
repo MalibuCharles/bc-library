@@ -1,23 +1,51 @@
-const express = require('express');
+// const express = require('express');
+// const { initializeApp, cert } = require("firebase-admin/app");
+// const { getFirestore } = require("firebase-admin/firestore");
 
-const app = express();
-app.use(express.json());
+// const credentials = require("../credentials.json");
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-})
-
-app.post('/users', (req, res) => {
-    const {name, age, email} = req.body;
+// initializeApp({
+//     credentials: cert(credentials)
+// })
 
 
-    const user = { name, age, email};
+// const app = express();
+// app.use(express.json());
 
-    const result = `My name is ${user.name}, I am ${user.age} years old and my email is ${user.email};`
+// app.get('/', (req, res) => {
+//     res.send('Hello World!');
+// })
 
-    res.send(result);
-})
+// const db = getFirestore();
 
-app.listen(3000, () => {
-    console.log('We be listening on 3000');
-})
+// const userCollection = db.collection("users");
+// userCollection
+// .get()
+// .then(snapshot =>{
+
+// })
+
+// app.post('/users', (req, res) => {
+//     const {name, age, email} = req.body;
+
+
+//     const user = { name, age, email};
+
+//     const result = `My name is ${user.name}, I am ${user.age} years old and my email is ${user.email};`
+
+//     res.send(result);
+// })
+
+// app.listen(3000, () => {
+//     console.log('We be listening on 3000');
+// })
+
+const customer = [{ name:'Malibu', drinkingAge: false, age: 19}, {name:'Sabrina', drinkingAge: true, age: 25}, {name:'Adam', drinkingAge: true, age: 99}]
+
+const isDrinkingAge = customer.some(customer => customer.age >= 21)
+const areAllDrinkingAge = customer.every(customer => customer.drinkingAge >= 21)
+const oneDrinkingAge = customer.find (customer => customer.drinkingAge >= 21) 
+const drinkingAgeCustomer = customer.filter(customer => customer.age >= 21)
+
+
+console.log(areAllDrinkingAge)
